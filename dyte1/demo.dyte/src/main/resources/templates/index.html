@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"> 
+<head> 
+    <meta charset="ISO-8859-1"> 
+    <title>Log Information</title> 
+ 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+    <script 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script 
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+</head> 
+<body> 
+<div align="center"> 
+    <h1>Log List</h1> 
+
+
+    <form th:action="@{/index}" method="get">
+        Filter:
+        <input type="text" name="keyword" id="keyword" size="15" th:value="${keyword}" required />
+        Start Date: <input type="text" name="startDate" id="startDate" placeholder="yyyy-MM-ddTHH:mm:ssZ" />
+        End Date: <input type="text" name="endDate" id="endDate" placeholder="yyyy-MM-ddTHH:mm:ssZ" />
+        <input type="submit" value="Search" />
+    </form>
+    
+
+    
+    
+    
+     
+    </br> 
+ 
+    <table border="3"> 
+        <thead> 
+        <tr> 
+            <th>Log ID</th> 
+            <th>Level</th> 
+            <th>Message</th> 
+            <th>ResourceID</th> 
+            <th>Timestamp</th> 
+            <th>TraceID</th> 
+            <th>SpanID</th> 
+            <th>Commit</th> 
+            <th>ParentResourceID</th>
+             
+           
+        </tr> 
+        </thead> 
+        <tbody> 
+        <tr th:each="logEntity : ${logList}"> 
+            <td th:text="${logEntity.id}">Log ID</td> 
+            <td th:text="${logEntity.level}">Level</td> 
+            <td th:text="${logEntity.message}">Message</td> 
+            <td th:text="${logEntity.resourceId}">ResourceID</td> 
+            <td th:text="${logEntity.timestamp}">Timestamp</td> 
+            <td th:text="${logEntity.traceId}">TraceID</td> 
+            <td th:text="${logEntity.spanId}">SpanID</td> 
+            <td th:text="${logEntity.commit}">Commit</td> 
+            <td th:text="${logEntity.parentResourceId}">ParentResourceID</td> 
+           
+       
+        
+
+        </tr> 
+        </tbody> 
+    
+    </table> 
+   
+</div> 
+</body> 
+</html>
+
